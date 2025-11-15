@@ -10,57 +10,112 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🔍 謎解きサイト</h1>
-            <div class="progress">
-                <span>ステージ: <span id="current-stage">1</span> / <span id="total-stages">3</span></span>
+    <!-- ホーム画面 -->
+    <div id="home-screen" class="home-screen">
+        <div class="home-container">
+            <h1 class="home-title">ジャスミン茶の部屋</h1>
+            <div class="room-selection">
+                <button id="puzzle-room-btn" class="room-btn puzzle-room">
+                    <span class="room-icon">🔍</span>
+                    <span class="room-name">謎解きの部屋</span>
+                </button>
+                <button id="answer-room-btn" class="room-btn answer-room">
+                    <span class="room-icon">📝</span>
+                    <span class="room-name">答えの部屋</span>
+                </button>
             </div>
-        </header>
+        </div>
+    </div>
 
-        <main>
-            <div class="stage-container">
-                <div class="stage-header">
-                    <h2 id="stage-title">ステージ 1</h2>
-                    <p id="stage-description">最初の謎に挑戦しましょう！</p>
-                </div>
+    <!-- 謎解きサイト -->
+    <div id="puzzle-site" class="puzzle-site hidden">
+        <!-- 名前入力画面 -->
+        <div id="name-input-screen" class="name-input-screen">
+            <div class="name-input-container">
+                <h2 class="name-input-title">お名前を入力してください</h2>
+                <input 
+                    type="text" 
+                    id="player-name-input" 
+                    class="name-input"
+                    placeholder="お名前を入力..."
+                    autocomplete="off"
+                    maxlength="20"
+                >
+                <button id="name-submit-btn" class="name-submit-btn">次に進む</button>
+            </div>
+        </div>
 
-                <div class="puzzle-area">
-                    <div id="puzzle-content" class="puzzle-content">
-                        <!-- 謎の内容がここに表示されます -->
+        <!-- 謎解きコンテンツ -->
+        <div id="puzzle-content-screen" class="puzzle-content-screen hidden">
+            <div class="container">
+                <main>
+                    <div class="stage-container">
+                        <div class="stage-header">
+                            <h2 id="stage-title">ステージ 1</h2>
+                            <p id="stage-description"></p>
+                        </div>
+
+                        <div class="puzzle-area">
+                            <div id="puzzle-content" class="puzzle-content">
+                                <!-- 謎の内容がここに表示されます -->
+                            </div>
+                            <div id="puzzle-image-container" class="puzzle-image-container">
+                                <!-- 画像がここに表示されます -->
+                            </div>
+                        </div>
+
+                        <div class="input-area">
+                            <label for="answer-input">答えを入力してください:</label>
+                            <input 
+                                type="text" 
+                                id="answer-input" 
+                                placeholder="答えを入力..."
+                                autocomplete="off"
+                            >
+                            <button id="submit-btn" class="submit-btn">送信</button>
+                        </div>
+
+                        <div class="feedback-area">
+                            <div id="feedback-message" class="feedback-message"></div>
+                        </div>
+
+                        <div id="hint-area" class="hint-area hidden">
+                            <button id="hint-btn" class="hint-btn">💡 ヒントを見る</button>
+                            <div id="hint-content" class="hint-content hidden"></div>
+                        </div>
+
+                        <div class="navigation">
+                            <button id="prev-btn" class="nav-btn" disabled>← 前へ</button>
+                        </div>
                     </div>
-                </div>
+                </main>
 
-                <div class="input-area">
-                    <label for="answer-input">答えを入力してください:</label>
-                    <input 
-                        type="text" 
-                        id="answer-input" 
-                        placeholder="答えを入力..."
-                        autocomplete="off"
-                    >
-                    <button id="submit-btn" class="submit-btn">送信</button>
-                </div>
-
-                <div class="feedback-area">
-                    <div id="feedback-message" class="feedback-message"></div>
-                </div>
-
-                <div class="hint-area">
-                    <button id="hint-btn" class="hint-btn">💡 ヒントを見る</button>
-                    <div id="hint-content" class="hint-content hidden"></div>
-                </div>
-
-                <div class="navigation">
-                    <button id="prev-btn" class="nav-btn" disabled>← 前へ</button>
-                    <button id="next-btn" class="nav-btn" disabled>次へ →</button>
-                </div>
+                <footer>
+                    <p>謎解きサイト © 2024</p>
+                </footer>
             </div>
-        </main>
+        </div>
+    </div>
 
-        <footer>
-            <p>謎解きサイト © 2024</p>
-        </footer>
+    <!-- ステージクリア画面 -->
+    <div id="stage-clear-screen" class="stage-clear-screen hidden">
+        <div class="stage-clear-container">
+            <h1 class="stage-clear-title">ステージクリア</h1>
+            <p class="stage-clear-message" id="stage-clear-message"></p>
+            <button id="go-to-answer-room-btn" class="stage-clear-btn">答えの部屋へ</button>
+            <button id="back-to-home-from-clear-btn" class="back-btn">ホームに戻る</button>
+        </div>
+    </div>
+
+    <!-- 答えの部屋 -->
+    <div id="answer-room" class="answer-room-screen hidden">
+        <div class="answer-container">
+            <h1>答えの部屋</h1>
+            <div id="answer-list" class="answer-list">
+                <!-- 答えの一覧がここに表示されます -->
+            </div>
+            <button id="back-to-home-btn" class="back-btn">ホームに戻る</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
